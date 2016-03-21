@@ -18,14 +18,14 @@ const DynamicForm = Ember.Component.extend({
   _renderer: null,
 
   _render() {
-    var renderer = this.get('_renderer');
+    let renderer = this.get('_renderer');
     if (!renderer) {
       let container = getOwner(this);
       let config = container.resolveRegistration('config:environment');
       if (config.dynamicForms && config.dynamicForms.renderer) {
-	renderer = container.lookup(`${config.dynamicForms.renderer}:renderers`);
+        renderer = container.lookup(`${config.dynamicForms.renderer}:dynamic-forms.renderers`);
       } else {
-	renderer = container.lookup('alpaca:renderers');
+        renderer = container.lookup('alpaca:dynamic-forms.renderers');
       }
       this.set('_renderer', renderer);
     }
